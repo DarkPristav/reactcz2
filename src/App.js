@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import Btn from './components/Btn.js'
+import BtnPlus from './components/BtnPlus.js'
+import ResetBtn from './components/ResetBtn'
+import { useState } from "react"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => {
+
+  const [value, setValue] = useState(0)
+
+  const decreaseOne = () => {
+    const newValue = value - 1
+    setValue(newValue)
+  }
+
+  const plusOne = () => {
+    const newValue = value + 1
+    setValue(newValue)
+  }
+
+  const reset = () => {
+    setValue(0)
+  }
+
+  return <div className="counter-box">
+    <div className='counter-title'>
+      <h1>{value}</h1>
     </div>
-  );
+    <Btn decreaseByOne={decreaseOne} />
+    <BtnPlus plusByOne={plusOne} />
+    <ResetBtn resetByOne={reset} />
+  </div>
 }
 
-export default App;
+export default App
